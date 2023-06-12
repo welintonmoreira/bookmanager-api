@@ -12,7 +12,7 @@ class AuthorTestsSeeder extends Seeder
      */
     public function run(): void
     {
-         \App\Models\Author::factory()->create([
+         \App\Models\Author::create([
              'name' => 'Test Author',
          ]);
     }
