@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\PublisherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,12 @@ Route::prefix('author')->group(function () {
 
 // Author (CRUD routes).
 Route::resource('author', AuthorController::class);
+
+// Publisher (Other routes).
+Route::prefix('publisher')->group(function () {
+    Route::controller(PublisherController::class)->group(function () {
+    });
+});
+
+// Publisher (CRUD routes).
+Route::resource('publisher', PublisherController::class);
