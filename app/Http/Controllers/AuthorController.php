@@ -59,11 +59,18 @@ class AuthorController extends Controller
      * Display the specified resource.
      *
      * @param Author $author
-     * @return array
+     * @return array|\Illuminate\Http\JsonResponse
      */
-    public function show(Author $author): array
+    public function show(Author $author): \Illuminate\Http\JsonResponse|array
     {
-        return $author->only(['id', 'name']);
+        try {
+            return $author->only(['id', 'name']);
+        } catch (\Exception $e) {
+            $responseError = new ResponseErrorHelper();
+            $responseError->setData((env('SHOW_EXCEPTION_MESSAGE')) ? $e->getMessage() : []);
+        }
+
+        return response()->json($responseError->toArray(), $responseError->getStatus());
     }
 
     /**
