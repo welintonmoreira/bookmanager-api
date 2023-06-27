@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class AuthorTestsSeeder extends Seeder
@@ -12,8 +11,8 @@ class AuthorTestsSeeder extends Seeder
      */
     public function run(): void
     {
-         \App\Models\Author::create([
-             'name' => 'Test Author',
-         ]);
+        \App\Models\Author::create([
+            'name' => 'Test Author',
+        ]);
     }
 }

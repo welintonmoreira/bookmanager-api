@@ -29,7 +29,7 @@ class UpdateAuthorRequest extends APIRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:2|max:255',
+            'name' => 'required|string|min:2|max:255',
         ];
     }
 
@@ -50,9 +50,7 @@ class UpdateAuthorRequest extends APIRequest
      */
     public function attributes(): array
     {
-        return [
-            'name' => "author's name",
-        ];
+        return [];
     }
 
     /**
