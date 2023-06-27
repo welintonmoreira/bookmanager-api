@@ -29,7 +29,7 @@ class PublisherValidations
         $publisher = $query->count();
 
         return ($publisher)
-            ? ((!$errorMessage) ? $publisher : 'An publisher with that full name already exists!')
+            ? ((!$errorMessage) ? $publisher : 'A publisher with that full name already exists!')
             : $publisher;
     }
 }

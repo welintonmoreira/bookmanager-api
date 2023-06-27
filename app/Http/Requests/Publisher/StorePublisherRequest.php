@@ -30,8 +30,8 @@ class StorePublisherRequest extends APIRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:2|max:255',
-            'full_name' => 'required|min:2|max:255',
+            'name' => 'required|string|min:2|max:255',
+            'full_name' => 'required|string|min:2|max:255',
         ];
     }
 
@@ -60,10 +60,7 @@ class StorePublisherRequest extends APIRequest
      */
     public function attributes(): array
     {
-        return [
-            'name' => "publisher's name",
-            'full_name' => "publisher's full name",
-        ];
+        return [];
     }
 
     /**

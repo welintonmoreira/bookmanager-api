@@ -4,9 +4,10 @@
 namespace App\Business\Publisher;
 
 
+use App\Business\Business;
 use App\Models\Publisher;
 
-class PublisherBusiness extends \App\Business\Business
+class PublisherBusiness extends Business
 {
     /**
      * @param Publisher $publisher

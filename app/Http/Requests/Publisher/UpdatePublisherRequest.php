@@ -29,8 +29,8 @@ class UpdatePublisherRequest extends APIRequest
     public function rules(): array
     {
         return [
-            'name' => 'min:2|max:255',
-            'full_name' => 'min:2|max:255',
+            'name' => 'string|min:2|max:255',
+            'full_name' => 'string|min:2|max:255',
         ];
     }
 
@@ -51,10 +51,7 @@ class UpdatePublisherRequest extends APIRequest
      */
     public function attributes(): array
     {
-        return [
-            'name' => "publisher's name",
-            'full_name' => "publisher's full name",
-        ];
+        return [];
     }
 
     /**
