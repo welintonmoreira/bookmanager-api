@@ -16,8 +16,8 @@ class BookValidations
      */
     public static function checkIfBookExistsByTitle(
         string $title,
-        int $exceptBookId = null,
-        bool $errorMessage = true
+        int    $exceptBookId = null,
+        bool   $errorMessage = true
     ): bool|string
     {
         $query = Book::where('title', $title);

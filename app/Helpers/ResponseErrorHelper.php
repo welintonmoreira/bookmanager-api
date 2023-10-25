@@ -29,16 +29,17 @@ class ResponseErrorHelper
     /**
      * ResponseErrorHelper constructor.
      *
-     * @param string $type
-     * @param string $errorMessage
+     * @param int               $status
+     * @param string            $type
+     * @param string            $errorMessage
      * @param array|string|null $data
      */
     public function __construct(
         int $status = Response::HTTP_INTERNAL_SERVER_ERROR,
         string $type = self::TYPE_EXCEPTION,
         string $errorMessage = self::DEFAULT_ERROR_MESSAGE,
-        array|string|null $data = [])
-    {
+        array|string|null $data = []
+    ) {
         $this->status = $status;
         $this->type = $type;
         $this->errorMessage = $errorMessage;
@@ -115,10 +116,10 @@ class ResponseErrorHelper
     public function toArray(): array
     {
         return [
-            'status' => $this->getStatus(),
-            'type' => $this->getType(),
+            'status'  => $this->getStatus(),
+            'type'    => $this->getType(),
             'message' => $this->getErrorMessage(),
-            'data' => $this->getData(),
+            'data'    => $this->getData(),
         ];
     }
 }

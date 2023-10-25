@@ -16,8 +16,8 @@ class PublisherValidations
      */
     public static function checkIfPublisherExistsByFullName(
         string $fullName,
-        int $exceptPublisherId = null,
-        bool $errorMessage = true
+        int    $exceptPublisherId = null,
+        bool   $errorMessage = true
     ): bool|string
     {
         $query = Publisher::where('full_name', $fullName);

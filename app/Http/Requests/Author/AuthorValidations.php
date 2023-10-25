@@ -16,8 +16,8 @@ class AuthorValidations
      */
     public static function checkIfAuthorExistsByName(
         string $name,
-        int $exceptAuthorId = null,
-        bool $errorMessage = true
+        int    $exceptAuthorId = null,
+        bool   $errorMessage = true
     ): bool|string
     {
         $query = Author::where('name', $name);
