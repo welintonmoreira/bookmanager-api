@@ -26,7 +26,7 @@ class AuthorController extends Controller
             return response()->json(AuthorBusiness::list($request->all()));
         } catch (\Exception $e) {
             $responseError = new ResponseErrorHelper();
-            $responseError->setData((env('SHOW_EXCEPTION_MESSAGE')) ? $e->getMessage() : []);
+            $responseError->setData((self::isShowExceptionMessage()) ? $e->getMessage() : []);
         }
 
         return response()->json($responseError->toArray(), $responseError->getStatus());
@@ -49,7 +49,7 @@ class AuthorController extends Controller
             return response()->json([], Response::HTTP_CREATED);
         } catch (\Exception $e) {
             $responseError = new ResponseErrorHelper();
-            $responseError->setData((env('SHOW_EXCEPTION_MESSAGE')) ? $e->getMessage() : []);
+            $responseError->setData((self::isShowExceptionMessage()) ? $e->getMessage() : []);
         }
 
         return response()->json($responseError->toArray(), $responseError->getStatus());
@@ -67,7 +67,7 @@ class AuthorController extends Controller
             return $author->only(['id', 'name']);
         } catch (\Exception $e) {
             $responseError = new ResponseErrorHelper();
-            $responseError->setData((env('SHOW_EXCEPTION_MESSAGE')) ? $e->getMessage() : []);
+            $responseError->setData((self::isShowExceptionMessage()) ? $e->getMessage() : []);
         }
 
         return response()->json($responseError->toArray(), $responseError->getStatus());
@@ -99,7 +99,7 @@ class AuthorController extends Controller
 
         } catch (\Exception $e) {
             $responseError = new ResponseErrorHelper();
-            $responseError->setData((env('SHOW_EXCEPTION_MESSAGE')) ? $e->getMessage() : []);
+            $responseError->setData((self::isShowExceptionMessage()) ? $e->getMessage() : []);
         }
 
         return response()->json($responseError->toArray(), $responseError->getStatus());
@@ -119,7 +119,7 @@ class AuthorController extends Controller
             return response()->noContent();
         } catch (\Exception $e) {
             $responseError = new ResponseErrorHelper();
-            $responseError->setData((env('SHOW_EXCEPTION_MESSAGE')) ? $e->getMessage() : []);
+            $responseError->setData((self::isShowExceptionMessage()) ? $e->getMessage() : []);
         }
 
         return response()->json($responseError->toArray(), $responseError->getStatus());

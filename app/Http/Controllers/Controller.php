@@ -9,4 +9,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+    /**
+     * @return bool
+     */
+    public static function isShowExceptionMessage(): bool
+    {
+        return (bool)env('SHOW_EXCEPTION_MESSAGE');
+    }
 }
