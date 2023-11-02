@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             PublisherTestsSeeder::class,
             BookTestsSeeder::class,
             BookPublisherTestsSeeder::class,
+            BookAuthorTestsSeeder::class,
         ]);
     }
 }
