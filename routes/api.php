@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookPublisherController;
 use App\Http\Controllers\PublisherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -47,3 +48,13 @@ Route::prefix('book')->group(function () {
 
 // Book (CRUD routes).
 Route::apiResource('book', BookController::class);
+
+// Books Publishers (Other routes).
+Route::prefix('book-publisher')->group(function () {
+    Route::controller(BookPublisherController::class)->group(function () {
+    });
+});
+
+// Books Publishers (CRUD routes).
+Route::apiResource('book-publisher', BookPublisherController::class)
+    ->except(['show', 'update']);
