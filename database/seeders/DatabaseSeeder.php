@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +15,7 @@ class DatabaseSeeder extends Seeder
             AuthorTestsSeeder::class,
             PublisherTestsSeeder::class,
             BookTestsSeeder::class,
+            BookPublisherTestsSeeder::class,
         ]);
     }
 }
