@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookAuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookPublisherController;
 use App\Http\Controllers\PublisherController;
@@ -57,4 +58,14 @@ Route::prefix('book-publisher')->group(function () {
 
 // Books Publishers (CRUD routes).
 Route::apiResource('book-publisher', BookPublisherController::class)
+    ->except(['show', 'update']);
+
+// Books Authors (Other routes).
+Route::prefix('book-author')->group(function () {
+    Route::controller(BookAuthorController::class)->group(function () {
+    });
+});
+
+// Books Authors (CRUD routes).
+Route::apiResource('book-author', BookAuthorController::class)
     ->except(['show', 'update']);
