@@ -12,7 +12,7 @@ class StoreAuthorRequest extends APIRequest
      *
      * @var bool
      */
-    protected bool $stopOnFirstFailure = true;
+    protected $stopOnFirstFailure = true;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -37,15 +37,18 @@ class StoreAuthorRequest extends APIRequest
     /**
      * Get the "after" validation callables for the request.
      *
-     * @return \Closure|array
+     * @param Validator $validator
+     * @return array|\Closure
      */
-    public function after(): array|\Closure
+    public function after(Validator $validator): array|\Closure
     {
-        return [
-            function (Validator $validator) {
-                $name = $this->input('name');
+        if ($validator->fails()) {
+            return [];
+        }
 
-                if (!empty($name) && $message = AuthorValidations::checkIfAuthorExistsByName($name)) {
+        return [
+            function () use ($validator) {
+                if ($message = AuthorValidations::checkIfAuthorExistsByName($this->input('name'))) {
                     $validator->errors()->add('name', $message);
                 }
             }

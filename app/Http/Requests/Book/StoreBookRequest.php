@@ -12,7 +12,7 @@ class StoreBookRequest extends APIRequest
      *
      * @var bool
      */
-    protected bool $stopOnFirstFailure = true;
+    protected $stopOnFirstFailure = true;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -49,16 +49,19 @@ class StoreBookRequest extends APIRequest
     /**
      * Get the "after" validation callables for the request.
      *
-     * @return \Closure|array
+     * @param Validator $validator
+     * @return array|\Closure
      */
-    public function after(): array|\Closure
+    public function after(Validator $validator): array|\Closure
     {
-        return [
-            function (Validator $validator) {
-                if (empty($this->input('create_even_if_record_exists'))) {
-                    $title = $this->input('title');
+        if ($validator->fails()) {
+            return [];
+        }
 
-                    if (!empty($title) && $message = BookValidations::checkIfBookExistsByTitle($title)) {
+        return [
+            function () use ($validator) {
+                if (empty($this->input('create_even_if_record_exists'))) {
+                    if ($message = BookValidations::checkIfBookExistsByTitle($this->input('title'))) {
                         $validator->errors()->add('title', $message);
                     }
                 }

@@ -11,7 +11,7 @@ class UpdatePublisherRequest extends APIRequest
      *
      * @var bool
      */
-    protected bool $stopOnFirstFailure = true;
+    protected $stopOnFirstFailure = true;
 
     /**
      * Determine if the user is authorized to make this request.

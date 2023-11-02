@@ -12,7 +12,7 @@ class StorePublisherRequest extends APIRequest
      *
      * @var bool
      */
-    protected bool $stopOnFirstFailure = true;
+    protected $stopOnFirstFailure = true;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -38,15 +38,18 @@ class StorePublisherRequest extends APIRequest
     /**
      * Get the "after" validation callables for the request.
      *
-     * @return \Closure|array
+     * @param Validator $validator
+     * @return array|\Closure
      */
-    public function after(): array|\Closure
+    public function after(Validator $validator): array|\Closure
     {
-        return [
-            function (Validator $validator) {
-                $fullName = $this->input('full_name');
+        if ($validator->fails()) {
+            return [];
+        }
 
-                if (!empty($fullName) && $message = PublisherValidations::checkIfPublisherExistsByFullName($fullName)) {
+        return [
+            function () use ($validator) {
+                if ($message = PublisherValidations::checkIfPublisherExistsByFullName($this->input('full_name'))) {
                     $validator->errors()->add('full_name', $message);
                 }
             }
