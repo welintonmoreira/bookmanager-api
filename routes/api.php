@@ -28,7 +28,7 @@ Route::prefix('author')->group(function () {
 });
 
 // Author (CRUD routes).
-Route::resource('author', AuthorController::class);
+Route::apiResource('author', AuthorController::class);
 
 // Publisher (Other routes).
 Route::prefix('publisher')->group(function () {
@@ -37,7 +37,7 @@ Route::prefix('publisher')->group(function () {
 });
 
 // Publisher (CRUD routes).
-Route::resource('publisher', PublisherController::class);
+Route::apiResource('publisher', PublisherController::class);
 
 // Book (Other routes).
 Route::prefix('book')->group(function () {
@@ -46,4 +46,4 @@ Route::prefix('book')->group(function () {
 });
 
 // Book (CRUD routes).
-Route::resource('book', BookController::class);
+Route::apiResource('book', BookController::class);
