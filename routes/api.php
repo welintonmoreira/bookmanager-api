@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Author (Other routes)
+// Author (Other routes).
 Route::prefix('author')->group(function () {
     Route::controller(AuthorController::class)->group(function () {
     });
